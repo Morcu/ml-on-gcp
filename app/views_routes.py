@@ -1,7 +1,7 @@
 from app import app
 
 from flask import request, render_template
-from app.classify import get_class
+from app.classify import get_class_ml
 
 @app.route("/")
 def index():
@@ -17,9 +17,9 @@ def index():
     if request.args:
 
         args = request.args
-        return render_template("index.html", args=args)
+        return render_template("public/index.html", args=args)
 
-    return render_template("index.html", args=args)
+    return render_template("public/index.html", args=args)
 
 @app.route("/task", methods=["POST"])
 def get_class():
@@ -28,6 +28,6 @@ def get_class():
     print(data)
 
     #text  = data["text"]
-    a = get_class("abcede")
+    a = get_class_ml("abcede")
 
     return 0

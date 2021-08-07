@@ -27,7 +27,7 @@ TARGETS = {
 }
 
 
-def get_class(text):
+def get_class_ml(text):
     # Lee los datos de los archivos y crea un dataframe con el texto
     predict_text = pd.DataFrame(columns=["text"])
     predict_text = predict_text.append({"text": text}, ignore_index=True)
