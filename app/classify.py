@@ -15,7 +15,7 @@ from app.utils import clean_text
 # Constantes
 SEED = 42
 MAX_TEXT_LENGTH = 200
-MODEL_PATH="../modeldata"
+MODEL_PATH="./modeldata"
 TARGETS = {
     0: "exploration",
     1: "headhunters",
@@ -51,6 +51,5 @@ def get_class_ml(text):
     # Transformar las predicciones a una clase e imprimir el resultado para cada arhcivo
     # con el formato: "archivo clase"
     y_p = [TARGETS[np.argmax(x)] for x in predictions]
-    print("------------")
-    print(y_p)
-    return y_p
+
+    return y_p[0]

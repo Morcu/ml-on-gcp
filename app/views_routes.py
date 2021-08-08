@@ -21,13 +21,10 @@ def index():
 
     return render_template("public/index.html", args=args)
 
+
 @app.route("/task", methods=["POST"])
 def get_class():
 
     data = request.get_json()
-    print(data)
 
-    #text  = data["text"]
-    a = get_class_ml("abcede")
-
-    return 0
+    return get_class_ml(data["text"])

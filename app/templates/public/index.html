@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Sentiment Analysis Web App</title>
+        <title>Medium classification app</title>
         <meta charset="utf-8">
         <meta name="viewport"  content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,19 +13,18 @@
          function submitForm(oFormElement) {
              var xhr = new XMLHttpRequest();
              xhr.onload = function() {
-                 var result = parseFloat(xhr.responseText);
+                 var result = xhr.responseText;
                  var resultElement = document.getElementById('result');
-                 if (result == 0) {
-                     resultElement.className = 'bg-danger';
-                     resultElement.innerHTML = 'Your review was NEGATIVE!';
-                 } else {
-                     resultElement.className = 'bg-success';
-                     resultElement.innerHTML = 'Your review was POSITIVE!';
-                 }
+                 console.log(result)
+                if (result) {
+                    resultElement.className = 'bg-success';
+                    resultElement.innerHTML = 'The class is ' + result + '!';
+                }
              }
              xhr.open (oFormElement.method, oFormElement.action, true);
              var review = document.getElementById('review');
-             xhr.send (review.value);
+             xhr.setRequestHeader('Content-Type', 'application/json');
+             xhr.send ({"text": review.value});
              return false;
          }
         </script>
@@ -40,7 +39,7 @@
                   action="http://127.0.0.1:5000/task"
                   onsubmit="return submitForm(this);" >                     <!-- HERE IS WHERE YOU NEED TO ENTER THE API URL -->
                 <div class="form-group">
-                    <label for="review">Class:</label>
+                    <label for="review"></label>
                     <textarea class="form-control"  rows="5" id="review">Please write your text here.</textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
