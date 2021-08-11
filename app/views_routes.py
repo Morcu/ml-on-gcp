@@ -25,6 +25,5 @@ def index():
 @app.route("/task", methods=["POST"])
 def get_class():
 
-    data = request.get_json()
-
-    return get_class_ml(data["text"])
+    data = request.get_data()
+    return get_class_ml(str(data))

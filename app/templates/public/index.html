@@ -24,7 +24,7 @@
              xhr.open (oFormElement.method, oFormElement.action, true);
              var review = document.getElementById('review');
              xhr.setRequestHeader('Content-Type', 'application/json');
-             xhr.send ({"text": review.value});
+             xhr.send (review.value);
              return false;
          }
         </script>
